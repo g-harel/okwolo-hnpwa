@@ -1,0 +1,60 @@
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  min-height: calc(100vh + 1px);
+  background-color: #fffcef;
+  padding-bottom: 30px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #330030;
+  padding: 6px 0 10px;
+  user-select: none;
+  color: #eeebde;
+}
+
+.header a:first-child:before {
+  padding-left: 10px;
+  font-weight: bold;
+  content: "H";
+}
+
+.header a {
+  cursor: pointer;
+  padding: 10px;
+  height: 100%;
+}
+
+.items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  border: 1px solid #330030;
+  min-height: 40px;
+  border-top: none;
+  font-size: 14px;
+  padding: 10px 30px;
+}
+
+.score {
+  display: inline-block;
+  font-weight: bold;
+  position: absolute;
+}
+
+.info {
+  padding-left: 30px;
+}
