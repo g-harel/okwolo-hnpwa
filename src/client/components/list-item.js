@@ -1,14 +1,22 @@
-const LoadingListItem = ({}) => {
+const LoadingListItem = () => {
   return (
     ['li.item.loading', {}, [
-      'loading',
+      ['span.score', {}, [
+        '-',
+      ]],
+      ['span.info'],
+      ['span.meta'],
     ]]
   );
 };
 
 module.exports = ({ redirect, item }) => {
-  if (!item || !item.url) {
+  if (!item) {
     return [LoadingListItem];
+  }
+  let host = '';
+  if (item.url) {
+    host = ` (${new URL(item.url || '').host})`;
   }
   return (
     ['li.item', {}, [
@@ -16,23 +24,22 @@ module.exports = ({ redirect, item }) => {
         String(item.score),
       ]],
       ['span.info', {}, [
-        ['a.title', { href: item.url }, [
+        ['a.title', { href: item.url || '/' }, [
           item.title,
         ]],
         ['span.host', {}, [
-          `(${new URL(item.url || '').host})`,
+          host,
         ]],
-        ['br'],
-        ['span.meta', {}, [
-          'by ',
-          ['a', { onclick: () => redirect(`/${item.by}`) }, [
-            item.by,
-          ]],
-          ` ${item.time} hours ago | `,
-          ['a', { onclick: () => redirect(`/item/${item.id}`) }, [
-            String(item.descendants),
-            ' comments',
-          ]],
+      ]],
+      ['span.meta', {}, [
+        'by ',
+        ['a', { onclick: () => redirect(`/${item.by}`) }, [
+          item.by,
+        ]],
+        ` ${item.time} hours ago | `,
+        ['a', { onclick: () => redirect(`/item/${item.id}`) }, [
+          String(item.descendants),
+          ' comments',
         ]],
       ]],
     ]]

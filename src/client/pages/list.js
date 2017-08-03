@@ -1,10 +1,10 @@
 const Header = require('../components/header');
 const ListItem = require('../components/list-item');
 
-const ListPage = ({ app, list, listNames, items }) => {
+const ListPage = ({ app, type, list, listNames, items, page }) => {
   return (
     ['div.wrapper', {}, [
-      [Header, { redirect: app.redirect, list, listNames }],
+      [Header, { redirect: app.redirect, type, list, listNames, page }],
       ['ul.items', {},
         list.map((id) => (
           [ListItem, { redirect: app.redirect, item: items[id] }]
@@ -22,7 +22,7 @@ module.exports = (app, { updateList }) => {
       const list = lists[type] || [];
       const listNames = Object.keys(lists);
       return (
-        [ListPage, { app, list, listNames, items }]
+        [ListPage, { app, type, list, listNames, items, page }]
       );
     };
   });

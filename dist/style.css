@@ -1,7 +1,6 @@
 body {
   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
   min-height: calc(100vh + 1px);
-  background-color: #fffcef;
   padding-bottom: 30px;
   margin: 0;
 }
@@ -20,7 +19,10 @@ a {
   background-color: #330030;
   padding: 6px 0 10px;
   user-select: none;
-  color: #eeebde;
+  position: fixed;
+  max-width: 100%;
+  color: #fff;
+  width: 800px;
 }
 
 .header a:first-child:before {
@@ -35,26 +37,73 @@ a {
   height: 100%;
 }
 
+.header a.current {
+  text-decoration: underline;
+}
+
+.header a.prev, .header a.next {
+  opacity: 0.5;
+}
+
 .items {
   list-style-type: none;
-  padding: 0;
+  padding: 37px 0 0;
   margin: 0;
 }
 
 .item {
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-template-rows: auto auto;
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
   border: 1px solid #330030;
-  min-height: 40px;
+  padding: 10px 4px;
   border-top: none;
-  font-size: 14px;
-  padding: 10px 30px;
+  min-height: 41px;
 }
 
 .score {
-  display: inline-block;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify-self: center;
+  align-self: center;
   font-weight: bold;
-  position: absolute;
 }
 
 .info {
-  padding-left: 30px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.host {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.meta {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.meta a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loading span {
+  background-color: #eee;
+  box-sizing: border-box;
+  margin-top: 4px;
+  height: 10px;
+  color: #fff;
+  width: 97%;
 }

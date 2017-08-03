@@ -2,14 +2,15 @@
   "name": "okwolo-hnpwa",
   "version": "0.0.0",
   "scripts": {
-    "start": "run-s webpack server",
-    "dev": "nodemon --delay 200ms --ignore dist -x npm start",
-    "webpack": "webpack",
+    "start": "run-p dev webpack",
+    "dev": "nodemon --delay 200ms --ignore dist --ignore src/client -x npm run server",
+    "webpack": "webpack --watch",
     "server": "node src/server/index.js"
   },
   "author": "g-harel",
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.7.0",
     "express": "^4.15.3",
     "okwolo": "^1.1.0"
   },
