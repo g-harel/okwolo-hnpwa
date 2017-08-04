@@ -1,3 +1,21 @@
+const timeSince = (seconds) => {
+  const difference = (Date.now() / 1000) - seconds;
+  const intervals = [
+    { unit: 'day', ms: 24 * 60 * 60 * 1 },
+    { unit: 'hour', ms: 60 * 60 * 1 },
+    { unit: 'minute', ms: 60 * 1 },
+    { unit: 'second', ms: 1 },
+  ];
+  return intervals
+    .map(({ unit, ms }) => {
+      const amount = Math.round(difference / ms);
+      if (amount > 0) {
+        return `${amount} ${unit}${amount > 1 ? 's' : ''}`;
+      }
+      return false;
+    }).find(Boolean);
+};
+
 const LoadingListItem = () => {
   return (
     ['li.item.loading', {}, [
@@ -36,7 +54,7 @@ module.exports = ({ redirect, item }) => {
         ['a', { onclick: () => redirect(`/${item.by}`) }, [
           item.by,
         ]],
-        ` ${item.time} hours ago | `,
+        ` ${timeSince(item.time)} ago | `,
         ['a', { onclick: () => redirect(`/item/${item.id}`) }, [
           String(item.descendants),
           ' comments',

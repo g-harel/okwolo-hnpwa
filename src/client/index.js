@@ -14,12 +14,12 @@ listPage(app, actions);
 
 app.setState({
   lists: {
-    top: [],
-    best: [],
-    new: [],
-    ask: [],
-    show: [],
-    job: [],
+    top: [0, 0, 0],
+    best: [0, 0, 0],
+    new: [0, 0, 0],
+    ask: [0, 0, 0],
+    show: [0, 0, 0],
+    job: [0, 0, 0],
   },
   items: {},
 });
