@@ -1,4 +1,4 @@
-const pageLenght = 25;
+const pageLenght = window.pageLength;
 
 const get = (path) => {
   const baseUrl = 'https://hacker-news.firebaseio.com/v0/';
@@ -22,12 +22,13 @@ module.exports = (app) => {
   };
 
   const updateItem = (id) => {
-    get(`item/${id}.json`)
+    return get(`item/${id}.json`)
       .then((data) => {
         app.act(
           'UPDATE_ITEM',
           { id, data },
         );
+        return data;
       });
   };
 
@@ -41,7 +42,7 @@ module.exports = (app) => {
   };
 
   const updateList = (type, page = 0) => {
-    get(`${type}stories.json`)
+    return get(`${type}stories.json`)
       .then((pageData) => {
         const data = pageData.slice(
           page * pageLenght,
@@ -52,6 +53,7 @@ module.exports = (app) => {
           'UPDATE_LIST',
           { type, data },
         );
+        return data;
       });
   };
 

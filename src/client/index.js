@@ -1,5 +1,7 @@
 const okwolo = require('okwolo');
 
+window.pageLength = 25;
+
 const fetch = require('./fetch');
 
 const itemPage = require('./pages/item');
@@ -12,14 +14,16 @@ const actions = fetch(app);
 itemPage(app, actions);
 listPage(app, actions);
 
+const placeholder = new Array(25).fill(0);
+
 app.setState({
   lists: {
-    top: [0, 0, 0],
-    best: [0, 0, 0],
-    new: [0, 0, 0],
-    ask: [0, 0, 0],
-    show: [0, 0, 0],
-    job: [0, 0, 0],
+    top: placeholder,
+    best: placeholder,
+    new: placeholder,
+    ask: placeholder,
+    show: placeholder,
+    job: placeholder,
   },
   items: {},
 });

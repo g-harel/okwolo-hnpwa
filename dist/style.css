@@ -17,6 +17,7 @@ a {
 
 .header {
   background-color: #330030;
+  border: 1px solid #000;
   padding: 6px 0 10px;
   user-select: none;
   position: fixed;
@@ -57,10 +58,15 @@ a {
   grid-template-rows: auto auto;
   grid-column-gap: 4px;
   grid-row-gap: 4px;
-  border: 1px solid #330030;
-  padding: 10px 4px;
+  background-color: #fbfbfb;
+  border: 1px solid #eee;
+  padding: 20px 4px;
   border-top: none;
   min-height: 41px;
+}
+
+.item:hover {
+  background-color: #f9f9f9;
 }
 
 .score {
@@ -71,6 +77,7 @@ a {
   justify-self: center;
   align-self: center;
   font-weight: bold;
+  color: #330030;
 }
 
 .info {
@@ -106,16 +113,4 @@ a {
   height: 10px;
   color: #fff;
   width: 97%;
-}
-
-.loading + .loading {
-  opacity: 0.35;
-}
-
-.loading + .loading + .loading {
-  opacity: 0.15;
-}
-
-.loading + .loading + .loading + .loading {
-  opacity: 0;
 }

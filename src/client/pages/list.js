@@ -16,7 +16,12 @@ const ListPage = ({ app, type, list, listNames, items, page }) => {
 
 module.exports = (app, { updateList }) => {
   app('/:type/:page?', ({ type, page = 0 }) => {
-    updateList(type, page);
+    updateList(type, page)
+      .then((data) => {
+        if (data.length < 1) {
+          app.redirect(`/${type}`);
+        }
+      });
 
     return ({ lists, items }) => {
       const list = lists[type] || [];

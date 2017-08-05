@@ -1,6 +1,6 @@
 module.exports = ({ redirect, type, listNames, page }) => {
-  const nextPath = `${type}/${page + 1}`;
-  const prevPath = `${type}/${Math.max(page - 1, 0)}`;
+  const nextPath = `/${type}/${Number(page) + 1}`;
+  const prevPath = `/${type}/${Math.max(Number(page) - 1, 0)}`;
   return (
     ['header.header', {}, [
       ['a', { onclick: () => redirect(`/${listNames[0]}`) }],
