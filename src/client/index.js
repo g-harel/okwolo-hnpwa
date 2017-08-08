@@ -19,7 +19,6 @@ const placeholder = new Array(25).fill(0);
 app.setState({
   lists: {
     top: placeholder,
-    best: placeholder,
     new: placeholder,
     ask: placeholder,
     show: placeholder,
